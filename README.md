@@ -1,50 +1,158 @@
-# Evidence-Driven-Agentic-AI-for-Real-Estate-Intelligence
+Building a Production-Ready Agentic AI System for Industry
 
-# Azure-Centric Agentic AI Learner Series
+This folder contains a Medium-ready series about building a production-grade agentic AI system for enterprise document intelligence. The series is intentionally sanitized: it explains the architecture, workflow patterns, extraction discipline, and operating model without exposing private source names, tenant-specific paths, proprietary identifiers, or sensitive prompt text.
 
-This is a public-facing learning path for building a production-ready agentic AI system over unstructured and semi-structured enterprise documents. It is intentionally broader than a single blog post: the series starts with foundations and prerequisites, then moves through architecture, indexing, retrieval, agent workflow design, metadata governance, validation, observability, security, compliance, and operational handover.
+The goal of the series is simple:
 
-The reference architecture uses two generic implementation areas:
+help a technical reader understand how a real agentic AI system is assembled
 
-- Application and retrieval platform: the Azure-centered application layer for document indexing, chat workflows, user uploads, Azure AI Search, Azure OpenAI, Chainlit-style user experiences, and conversation persistence.
-- Metric extraction runtime: the governed extraction layer for mapping-driven query generation, tool-sequenced retrieval, lean JSON outputs, enrichment, monitoring, and export-ready CSVs.
+make the ideas approachable for product, data, and engineering readers
 
-## What This Series Is For
+stay grounded in production implementation patterns
 
-Use this series when you want to understand how to build the full system, not just the prompt. A production agentic AI solution needs document ingestion, metadata, search indexes, extraction rules, tool policies, validation, data contracts, monitoring, recovery behavior, and a human operating model.
+focus on an Azure-centered production system
 
-The examples use real estate intelligence concepts such as IRR and rent growth rate because they make the problem concrete. The same approach can be applied to many other variables, metrics, facts, clauses, risks, or operational attributes.
+Flagship Standalone Post
 
-## Current System Reference Model
+This series also includes a standalone technical deep dive built from the blog brief:
 
-The series uses an Azure-centered reference architecture:
+Subject: Automating Real Estate Intelligence with Agentic AI Workflows
 
-- Azure Storage or equivalent enterprise document storage for raw files and generated artifacts.
-- Azure AI Search for file-path discovery, chunk retrieval, semantic search, and metadata-filtered evidence lookup.
-- Azure OpenAI for reasoning, query rewriting, extraction, enrichment, and validation assistance.
-- Application services for interactive workflows, user uploads, chat persistence, retrieval orchestration, and analyst review.
-- A metric extraction runtime for repeatable extraction runs, tool sequencing, lean JSON outputs, enrichment agents, monitoring, and export-ready CSVs.
+Focus: using internal rate of return (IRR) and rent growth rate as concrete examples to explain how the same workflow can extract as much real estate data and intelligence as needed
 
-## Reading Order
+Draft: technical-blog-automating-real-estate-intelligence-with-agentic-ai-workflows.md
 
-Read the numbered files in order. The series is structured as a production build path:
+Use that post as the single-article version of the story, and use the numbered parts as the expanded series.
 
-- `00` starts with the indexing foundation.
-- `01` through `05` define the use case, requirements, plan, and RACI.
-- `06` through `11` explain architecture, workflow design, data flow, indexing, freshness, and incremental reindexing.
-- `12` through `17` define data contracts, quality, observability, recovery, security, compliance, and auditability.
-- `18` onward covers production architecture, service mapping, implementation, operational handover, validation, readiness, and code-alignment guidance.
+What This Series Is Trying To Teach
 
-## Public Sanitization Policy
+This is not a series about "how to make an LLM call tools."
 
-These documents are written as learning material. Do not publish tenant names, client names, raw storage paths, subscription identifiers, secrets, index names that reveal internal context, or proprietary document examples. When sharing externally, describe implementation patterns and use generic examples such as IRR, rent growth rate, investment memo, source document, selected record, and supporting evidence.
+It is a series about how to build a system that can be trusted to answer business questions from messy enterprise documents.
 
-## Core Design Principles
+That means the series is built around five repeated themes:
 
-1. Treat retrieval as an engineering system, not a prompt trick.
-2. Keep raw documents, search indexes, extracted values, and exported data connected through provenance.
-3. Write extraction rules per variable: where to look first, how to extract, how to validate or calculate, and how to resolve conflicts.
-4. Prefer narrow, metadata-scoped retrieval before broad semantic search.
-5. Separate raw extraction from enrichment, normalization, quality checks, and reporting.
-6. Make failures visible through monitoring files, event logs, retry metadata, and archive folders.
-7. Keep humans in control through clear data contracts, repeatable runs, and explainable evidence.
+Retrieval quality comes before agent cleverness.
+
+Domain grounding matters as much as model choice.
+
+Prompts are operating policies, not writing exercises.
+
+Raw model output is not the final product.
+
+Evaluation, recovery, and governance are part of the architecture.
+
+Extraction Rule Authoring Pattern
+
+One of the core ideas behind this system is that extraction rules are written in a repeatable per-variable pattern.
+
+For each variable, the mapping logic is authored in this order:
+
+Where to look firstDefine the highest-priority document families, sections, tabs, tables, or page contexts.
+
+How to extractDefine the labels, synonyms, structural patterns, and narrative cues that count as evidence.
+
+How to calculate or validateDefine fallback formulas, plausibility checks, unit checks, chronology checks, and scenario checks.
+
+How to resolve conflictsDefine source precedence, version precedence, classifier handling, and what to do when multiple plausible values remain.
+
+This pattern is a major reason the workflow stays disciplined. It turns a vague extraction target into a controlled retrieval-and-decision recipe.
+
+Implementation Areas Used In The Writing
+
+The public narrative refers to implementation areas rather than private repository paths:
+
+Metric extraction runtime
+
+Tool description layer
+
+Query generation layer
+
+Path-index and chunk-index retrieval tools
+
+Parser and formatter layer
+
+Runtime configuration layer
+
+Governed metric mapping layer
+
+Sanitized asset and investment reference datasets
+
+Application platform data-indexing modules
+
+Conversational service layer
+
+Index-update pipeline
+
+Application platform documentation
+
+Current System Lens
+
+The updated series treats the production system as two connected layers:
+
+a general Azure document intelligence platform for ingestion, indexing, retrieval, chat, user uploads, and observability
+
+a specialized metric extraction workflow for governed asset-level data extraction, enrichment, monitoring, and export
+
+The public narrative stays sanitized: it explains the architecture patterns without exposing proprietary identifiers, secrets, tenant-specific paths, or sensitive prompt text.
+
+Sanitization Policy
+
+All documents in this folder are intentionally sanitized to protect organizational integrity.
+
+That means the series:
+
+avoids exposing proprietary identifiers, tenant-specific values, and operational secrets
+
+avoids reproducing sensitive prompt material beyond what is necessary to explain architecture
+
+focuses on engineering patterns, control logic, and workflow design rather than organization-specific business detail
+
+refers to document families, storage layers, mapping structures, and tool roles at an architectural level
+
+This keeps the writing safe to share publicly while still making it technically useful for AI engineers, data scientists, and PropTech readers.
+
+Series Map
+
+part-01-foundation-before-agents.mdWhy the real foundation is indexing, metadata, and corpus trust.
+
+part-02-retrieval-architecture-that-agents-can-trust.mdWhy this system separates path discovery from chunk retrieval.
+
+part-03-domain-grounding-mappings-and-entity-resolution.mdHow mappings, aliases, and entity hierarchy turn search into understanding.
+
+part-04-system-prompts-as-operating-policy.mdHow the system prompt controls behavior, risk, and output discipline.
+
+part-05-turning-an-agentic-ai-workflow-into-a-maintainable-system.mdHow to turn a successful agentic AI workflow into a maintainable workflow package.
+
+part-06-data-contracts-post-processing-and-business-ready-outputs.mdWhy the final product is not a model response but a governed business artifact.
+
+part-07-evaluation-observability-and-recovery.mdHow to measure quality, monitor runs, and recover safely.
+
+part-08-security-governance-and-how-to-roll-it-out.mdHow to make the system adoptable inside a real organization.
+
+Suggested Publishing Approach
+
+If this is going to Medium, a reader-friendly release order would be:
+
+Publish Part 1 first because it establishes the mental model.
+
+Publish Parts 2 to 4 as the "how the system thinks" section.
+
+Publish Parts 5 and 6 as the "how the system is built" section.
+
+Publish Parts 7 and 8 as the "how the system survives in production" section.
+
+Suggested Next Editing Pass
+
+Before publishing, consider adding:
+
+one sanitized architecture diagram
+
+one sanitized sequence diagram
+
+one short pseudocode excerpt for tool orchestration
+
+one sanitized mapping snippet
+
+one sanitized asset-data example
+
