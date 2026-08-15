@@ -1,5 +1,26 @@
 # Building an Evidence-Driven Agentic AI System for Real-Estate Intelligence
 
+A production-oriented reference architecture for extracting trustworthy, traceable intelligence from complex enterprise documents.
+```
+Business Question
+       ↓
+Entity Resolution
+       ↓
+Domain Grounding
+       ↓
+Agentic Planning
+       ↓
+Evidence Retrieval
+       ↓
+Extraction
+       ↓
+Validation
+       ↓
+Conflict Resolution
+       ↓
+Evidence-Backed Output
+```
+---
 This folder contains a Medium-ready series about building a production-grade agentic AI system for enterprise document intelligence. The series is intentionally sanitized: it explains the architecture, workflow patterns, extraction discipline, and operating model without exposing private source names, tenant-specific paths, proprietary identifiers, or sensitive prompt text.
 
 The goal of the series is simple:
