@@ -118,18 +118,7 @@ This keeps the writing safe to share publicly while still making it technically 
 8. `part-08-security-governance-and-how-to-roll-it-out.md`
    How to make the system adoptable inside a real organization.
 
-## Suggested Publishing Approach
-
-If this is going to Medium, a reader-friendly release order would be:
-
-1. Publish Part 1 first because it establishes the mental model.
-2. Publish Parts 2 to 4 as the "how the system thinks" section.
-3. Publish Parts 5 and 6 as the "how the system is built" section.
-4. Publish Parts 7 and 8 as the "how the system survives in production" section.
-
-## Suggested Next Editing Pass
-
-Before publishing, consider adding:
+[System](linkedin-cover.png)
 
 * one sanitized architecture diagram
 * one sanitized sequence diagram
