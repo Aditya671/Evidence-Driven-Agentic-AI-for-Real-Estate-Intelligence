@@ -1,4 +1,4 @@
-# Building a Production-Ready Agentic AI System for Industry
+# Building an Evidence-Driven Agentic AI System for Real-Estate Intelligence
 
 This folder contains a Medium-ready series about building a production-grade agentic AI system for enterprise document intelligence. The series is intentionally sanitized: it explains the architecture, workflow patterns, extraction discipline, and operating model without exposing private source names, tenant-specific paths, proprietary identifiers, or sensitive prompt text.
 
