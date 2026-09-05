@@ -1,13 +1,13 @@
-# Part 3: Domain Grounding Is What Turns Search Into Understanding
+﻿# Part 3: Domain Grounding Is What Turns Search Into Understanding
 
 Good retrieval is necessary, but it is not enough.
 
 An agent can find relevant text and still produce the wrong answer if it does not understand:
 
-* what the business term actually means
-* which aliases refer to the same entity
-* which entities are parent-level versus child-level
-* which metric variants should be treated separately
+- what the business term actually means
+- which aliases refer to the same entity
+- which entities are parent-level versus child-level
+- which metric variants should be treated separately
 
 This is where the metric extraction runtime becomes especially instructive. It does not just search documents. It grounds search and extraction in domain-aware data assets.
 
@@ -15,25 +15,25 @@ This is where the metric extraction runtime becomes especially instructive. It d
 
 A user may ask for:
 
-* the asset
-* the investment
-* the building
-* the address
-* the fund-level context
+- the asset
+- the investment
+- the building
+- the address
+- the fund-level context
 
 And they may use names that are:
 
-* abbreviated
-* old
-* informal
-* operational rather than legal
+- abbreviated
+- old
+- informal
+- operational rather than legal
 
 At the same time, a requested metric such as rent growth, NOI, vintage date, or occupancy might appear:
 
-* under multiple labels
-* in multiple scenarios
-* in multiple document families
-* with multiple classification types
+- under multiple labels
+- in multiple scenarios
+- in multiple document families
+- with multiple classification types
 
 Without grounding, the agent has to improvise. That is where mistakes happen.
 
@@ -41,11 +41,11 @@ Without grounding, the agent has to improvise. That is where mistakes happen.
 
 The system uses several grounding assets that reduce ambiguity before synthesis even begins:
 
-* a key-variable extraction map
-* a governed metric mapping JSON file
-* sanitized asset reference data
-* sanitized investment reference data
-* reusable domain skills and retrieval policies
+- a key-variable extraction map
+- a governed metric mapping JSON file
+- sanitized asset reference data
+- sanitized investment reference data
+- reusable domain skills and retrieval policies
 
 These are not side documents. They are part of the system's intelligence.
 
@@ -55,13 +55,13 @@ The asset CSV is a good example.
 
 It does not only store asset names. It also stores:
 
-* fund
-* investment
-* address
-* city and state
-* P-codes
-* property type
-* latitude and longitude
+- fund
+- investment
+- address
+- city and state
+- P-codes
+- property type
+- latitude and longitude
 
 That means the system can search using richer anchors than a single user phrase.
 
@@ -75,10 +75,10 @@ organizations rarely speak with one stable naming system.
 
 The same fund or product may appear as:
 
-* a formal name
-* a legacy name
-* an internal shorthand
-* an older brand label
+- a formal name
+- a legacy name
+- an internal shorthand
+- an older brand label
 
 If the agent does not know those relationships, retrieval becomes inconsistent and the answers feel random to users.
 
@@ -92,19 +92,19 @@ the requested entity level and the matched document level are not always the sam
 
 For example:
 
-* a user may ask about an asset
-* the best source may be an investment-level memo
-* that memo may still be valid if it clearly covers the requested asset
+- a user may ask about an asset
+- the best source may be an investment-level memo
+- that memo may still be valid if it clearly covers the requested asset
 
 This sounds subtle, but it is a major production issue. If you do not model this explicitly, the agent either rejects useful evidence or overstates confidence.
 
 That is why the skill emphasizes concepts such as:
 
-* requested entity level
-* matched document level
-* coverage scope
-* temporal scope
-* ambiguity notes
+- requested entity level
+- matched document level
+- coverage scope
+- temporal scope
+- ambiguity notes
 
 This is a mature design choice because it teaches the system to be honest about scope.
 
@@ -114,24 +114,24 @@ The metric mapping files also do much more than rename variables.
 
 They define:
 
-* descriptions
-* units
-* keywords
-* avoid terms
-* classifier logic
-* subtypes
-* formulas
-* likely column names
+- descriptions
+- units
+- keywords
+- avoid terms
+- classifier logic
+- subtypes
+- formulas
+- likely column names
 
 This gives the system a controlled way to understand what the user really means.
 
 Instead of saying "search for rent growth," the system can reason more carefully:
 
-* which subtype?
-* which classification?
-* which document family?
-* which nearby terms are positive signals?
-* which terms are likely false positives?
+- which subtype?
+- which classification?
+- which document family?
+- which nearby terms are positive signals?
+- which terms are likely false positives?
 
 That is how a retrieval pipeline starts to become domain-aware.
 
@@ -150,10 +150,10 @@ That pattern matters because it turns the mapping into a reusable operating asse
 
 For example, for a variable such as IRR or rent growth rate:
 
-* **Where to look first** defines the most likely document families, sections, tables, schedules, or tabs.
-* **How to extract** defines the accepted labels, synonyms, classifier hints, and structural cues that count as evidence.
-* **How to calculate or validate** defines fallback formulas, unit checks, chronology checks, and scenario checks.
-* **How to resolve conflicts** defines source precedence, version precedence, and what to do when multiple plausible values remain.
+- **Where to look first** defines the most likely document families, sections, tables, schedules, or tabs.
+- **How to extract** defines the accepted labels, synonyms, classifier hints, and structural cues that count as evidence.
+- **How to calculate or validate** defines fallback formulas, unit checks, chronology checks, and scenario checks.
+- **How to resolve conflicts** defines source precedence, version precedence, and what to do when multiple plausible values remain.
 
 This is the simplest way to keep a stochastic workflow disciplined. The model is still doing retrieval and interpretation, but the mapping tells it what good evidence looks like and how to behave when the evidence is messy.
 
@@ -185,3 +185,11 @@ Once the system has retrieval structure and domain grounding, the next question 
 **Where do all the operating rules live?**
 
 In this project, a large part of that answer is the workflow system prompt. Part 4 shows why the prompt is best understood as a policy document, not a clever piece of prose.
+
+
+
+
+
+
+
+

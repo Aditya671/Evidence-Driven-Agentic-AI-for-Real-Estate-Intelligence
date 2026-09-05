@@ -1,4 +1,4 @@
-# Part 6: Your Agent Is Only As Good As Its Output Contract
+﻿# Part 6: Your Agent Is Only As Good As Its Output Contract
 
 A production agentic AI system does not stop when the model produces an answer.
 
@@ -14,11 +14,11 @@ In a production extraction system, the business usually does not consume the raw
 
 They consume:
 
-* a parsed row
-* a normalized dataset
-* a CSV export
-* a QA-ready artifact
-* a traceable business record
+- a parsed row
+- a normalized dataset
+- a CSV export
+- a QA-ready artifact
+- a traceable business record
 
 That is why the output contract matters so much. If the system cannot shape its answers consistently, it cannot become part of a dependable workflow.
 
@@ -28,11 +28,11 @@ The workflow prompt, parser, and runner all point toward the same contract.
 
 The final row shape includes things like:
 
-* entity context
-* value context
-* evidence context
-* metadata context
-* comments and traceability
+- entity context
+- value context
+- evidence context
+- metadata context
+- comments and traceability
 
 The data-contract design reinforces the same idea from the architecture side.
 
@@ -48,9 +48,9 @@ At first glance, that may look unusual. In practice, it is very practical.
 
 It creates a bridge between:
 
-* model-friendly structured output
-* human-inspectable raw output
-* parser-friendly normalized output
+- model-friendly structured output
+- human-inspectable raw output
+- parser-friendly normalized output
 
 That means the team can inspect raw responses, debug parsing issues, and reprocess outputs without rerunning the whole workflow.
 
@@ -60,21 +60,21 @@ It also means the prompt, parser, and export layers are all speaking the same la
 
 The batch runner keeps multiple artifact layers:
 
-* raw accepted-value responses
-* active `json_format` outputs and retry archives
-* processed CSV outputs
-* unsuccessful rows
-* failed-query artifacts
-* extraction monitoring, status reports, and master-data exports
+- raw accepted-value responses
+- active `json_format` outputs and retry archives
+- processed CSV outputs
+- unsuccessful rows
+- failed-query artifacts
+- extraction monitoring, status reports, and master-data exports
 
 This is an excellent operational design because it matches how real teams investigate issues.
 
 When something looks wrong, a human can ask:
 
-* what did the model actually say?
-* how did the parser interpret it?
-* why did a row land in the unsuccessful output?
-* which query failed?
+- what did the model actually say?
+- how did the parser interpret it?
+- why did a row land in the unsuccessful output?
+- which query failed?
 
 That is much easier than trying to debug from one flattened final export.
 
@@ -86,10 +86,10 @@ A mature system does not just celebrate success rows. It also makes non-success 
 
 In this system, that means:
 
-* failed queries are stored
-* parse failures are summarized
-* successful and unsuccessful outputs are separated
-* reruns can focus on unresolved cases
+- failed queries are stored
+- parse failures are summarized
+- successful and unsuccessful outputs are separated
+- reruns can focus on unresolved cases
 
 That is exactly how an AI workflow becomes maintainable.
 
@@ -101,11 +101,11 @@ That may sound old-fashioned, but it is actually very smart.
 
 CSV is often the format that bridges:
 
-* analysts
-* QA reviewers
-* downstream scripts
-* spreadsheets
-* reporting workflows
+- analysts
+- QA reviewers
+- downstream scripts
+- spreadsheets
+- reporting workflows
 
 A polished AI system should be able to meet people where they already work.
 
@@ -138,3 +138,13 @@ Once the output contract is stable, the next question becomes operational:
 How do you know the system is performing well, and how do you recover when it does not?
 
 That is what Part 7 covers.
+
+
+
+
+
+
+
+
+
+

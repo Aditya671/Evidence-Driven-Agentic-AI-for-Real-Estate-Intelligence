@@ -1,4 +1,4 @@
-# Part 5: How to Turn an Agentic AI Workflow Into a Maintainable System
+﻿# Part 5: How to Turn an Agentic AI Workflow Into a Maintainable System
 
 One of the hardest transitions in applied AI is turning an early working workflow into a production-ready system without breaking behavior.
 
@@ -12,10 +12,10 @@ Early workflow implementations are not just code. They are memory.
 
 They contain:
 
-* the experiments that worked
-* the prompts that finally clicked
-* the run steps people trust
-* the output formats the business has already seen
+- the experiments that worked
+- the prompts that finally clicked
+- the run steps people trust
+- the output formats the business has already seen
 
 That is why so many production transitions go badly. The team tries to make the code cleaner, but accidentally changes the behavior that made the workflow useful.
 
@@ -25,13 +25,13 @@ The module-based metric extraction runtime is not a rewrite that ignores the exi
 
 The runtime breaks responsibilities into manageable components:
 
-* configuration
-* prompt management
-* query generation
-* orchestration
-* batch execution
-* schema contracts
-* command-line operations
+- configuration
+- prompt management
+- query generation
+- orchestration
+- batch execution
+- schema contracts
+- command-line operations
 
 This is a good pattern because it lets the team modularize without pretending the earlier workflow behavior does not matter.
 
@@ -43,9 +43,9 @@ The package-local prompt artifact preserves the production query-generation and 
 
 That keeps the package aligned with the real prompt artifacts:
 
-* `fund_knowledge_str`
-* `query_generator_system_prompt`
-* `agentic_ai_workflow_system_prompt`
+- `fund_knowledge_str`
+- `query_generator_system_prompt`
+- `agentic_ai_workflow_system_prompt`
 
 This is much better than manually copying long prompts into a new module and hoping nothing changed.
 
@@ -57,10 +57,10 @@ The workflow's search-brief generation logic is turned into a reusable query bui
 
 That gives the system a reusable place to:
 
-* shape the variable-specific search specification
-* load the configured LLM
-* generate optimized search briefs
-* cache metric-level query templates
+- shape the variable-specific search specification
+- load the configured LLM
+- generate optimized search briefs
+- cache metric-level query templates
 
 This is a subtle but important production move. Once query generation becomes a first-class module, it becomes easier to test, inspect, and reuse.
 
@@ -70,21 +70,21 @@ The caching behavior is especially practical. The system generates the metric-le
 
 The orchestrator and runner separate two different concerns:
 
-* how one workflow query is executed
-* how a whole batch of asset-metric work is managed
+- how one workflow query is executed
+- how a whole batch of asset-metric work is managed
 
 The orchestrator handles one extraction request at a time.
 
 The runner handles the surrounding batch behavior:
 
-* loading assets
-* loading metric mappings
-* generating cached queries
-* running asset-by-metric loops
-* persisting raw outputs
-* normalizing JSON and legacy markdown outputs
-* exporting processed CSVs
-* storing failures, retry archives, status reports, monitoring events, and upload manifests
+- loading assets
+- loading metric mappings
+- generating cached queries
+- running asset-by-metric loops
+- persisting raw outputs
+- normalizing JSON and legacy markdown outputs
+- exporting processed CSVs
+- storing failures, retry archives, status reports, monitoring events, and upload manifests
 
 That separation makes the system much easier for another engineer to learn.
 The current runtime also has a more mature retry path than the earlier workflow. It can validate `file_path` and `doc_id` lineage, retry primary-index failures, fall back to another approved index when needed, archive prior attempts, and only then run enrichment on the accepted row.
@@ -99,11 +99,11 @@ It turns the workflow package into something operational, not just importable.
 
 That matters because real teams need to:
 
-* run targeted subsets
-* override paths
-* filter funds or investments
-* test one metric at a time
-* point outputs at controlled directories
+- run targeted subsets
+- override paths
+- filter funds or investments
+- test one metric at a time
+- point outputs at controlled directories
 
 A system becomes much easier to adopt when it is not trapped inside an ad hoc execution surface.
 
@@ -113,11 +113,11 @@ The tests under `tests/` reinforce that this is not just a packaging exercise.
 
 There are targeted tests around:
 
-* prompt extraction
-* runner behavior
-* query-builder logic
-* CLI parsing
-* orchestrator success and failure paths
+- prompt extraction
+- runner behavior
+- query-builder logic
+- CLI parsing
+- orchestrator success and failure paths
 
 That is what responsible workflow-system engineering looks like. It is not enough to say the new package is cleaner. You need to prove it still behaves like the workflow people trust.
 
@@ -146,3 +146,19 @@ Once the workflow has a maintainable runtime, the next question is not about pro
 How do you turn model responses into something a business team can actually use, validate, and trust?
 
 That is what Part 6 covers.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

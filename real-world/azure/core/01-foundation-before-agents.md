@@ -1,11 +1,11 @@
-# Part 1: Before You Build Agents, Build the Ground They Stand On
+﻿# Part 1: Before You Build Agents, Build the Ground They Stand On
 
 When people say they want to build an agentic AI system, they usually start with the visible part:
 
-* the model
-* the tools
-* the orchestration loop
-* the interface
+- the model
+- the tools
+- the orchestration loop
+- the interface
 
 That is understandable, but it is usually the wrong starting point.
 
@@ -27,11 +27,11 @@ Imagine an analyst asks:
 
 That sounds like one question. In reality, the system has to solve several smaller questions first:
 
-* Which document family is likely to contain the answer?
-* Is the asset name written the same way in every file?
-* Which document version should count as current?
-* Is the answer in narrative text or a financial table?
-* Can the system prove the answer with a file path, page number, and citation?
+- Which document family is likely to contain the answer?
+- Is the asset name written the same way in every file?
+- Which document version should count as current?
+- Is the answer in narrative text or a financial table?
+- Can the system prove the answer with a file path, page number, and citation?
 
 This is why so many early agent demos feel magical but break in production. The visible question is simple. The hidden data work is not.
 
@@ -41,21 +41,21 @@ The architecture repeatedly shows that the system is built on top of a retrieval
 
 That shows up across several design layers:
 
-* runtime configuration
-* indexing design
-* retrieval service design
-* unstructured document processing
-* metadata and freshness strategy
-* incremental reindexing and change detection
+- runtime configuration
+- indexing design
+- retrieval service design
+- unstructured document processing
+- metadata and freshness strategy
+- incremental reindexing and change detection
 
 Taken together, these sources describe a system that cares deeply about:
 
-* document identity
-* chunk identity
-* version handling
-* checksum-based change detection
-* searchable metadata
-* reproducibility of runs
+- document identity
+- chunk identity
+- version handling
+- checksum-based change detection
+- searchable metadata
+- reproducibility of runs
 
 That is not background plumbing. That is the actual foundation.
 
@@ -63,8 +63,8 @@ That is not background plumbing. That is the actual foundation.
 
 The indexing foundation makes a very important point:
 
-* no extraction quality without retrieval quality
-* no retrieval quality without indexing quality
+- no extraction quality without retrieval quality
+- no retrieval quality without indexing quality
 
 This is one of the clearest truths in production AI.
 
@@ -72,12 +72,12 @@ If the corpus is weak, the agent is forced to compensate by guessing. And when a
 
 Bad indexing shows up later as:
 
-* missing evidence
-* wrong document versions
-* low recall
-* duplicate or stale answers
-* asset mix-ups
-* poor auditability
+- missing evidence
+- wrong document versions
+- low recall
+- duplicate or stale answers
+- asset mix-ups
+- poor auditability
 
 That is why Step 0 in this system is not "build the agent." It is:
 
@@ -97,24 +97,23 @@ One of the most important ideas in this project is that every extracted answer s
 
 The documents and chunks are not treated as anonymous text. They carry business context through fields such as:
 
-* `doc_id`
-* `path`
-* `checksum`
-* `last_modified`
-* `uploaded`
+- `doc_id`
+- `path`
+- `checksum`
+- `last_modified`
+- `uploaded`
 
 The freshness strategy takes this further by defining states like:
 
-* new
-* current
-* stale
-* failed
-* deleted
+- new
+- current
+- stale
+- failed
+- deleted
 
 This matters because enterprise AI is rarely just about finding text. It is about deciding whether that text is still trustworthy.
 
 If your system cannot answer "is this still the current version?", it is not ready for production reporting.
-
 ## The mapping layer is part of the foundation too
 
 Another important foundation element in this project is the way extraction rules are authored inside the mapping layer.
@@ -136,17 +135,17 @@ Another detail worth noticing is how output data is stored.
 
 The metric extraction runtime uses a layered output pattern:
 
-* raw inputs remain preserved
-* active extraction outputs are stored as structured JSON under `json_format`, with archive and report folders for retry and audit
-* processed outputs are normalized into successful, unsuccessful, monitoring, and master-data CSV files
+- raw inputs remain preserved
+- active extraction outputs are stored as structured JSON under `json_format`, with archive and report folders for retry and audit
+- processed outputs are normalized into successful, unsuccessful, monitoring, and master-data CSV files
 
 That gives the team something extremely valuable:
 
-* rerun safety
-* parser debugging
-* replayability
-* audit support
-* easier QA
+- rerun safety
+- parser debugging
+- replayability
+- audit support
+- easier QA
 
 This is a very human-centered design choice because it recognizes how teams actually work. People need to inspect, compare, replay, and explain results. A single opaque final answer is not enough.
 
@@ -158,17 +157,17 @@ If you want an easy way to explain this architecture to someone outside the AI t
 
 If the evidence room is messy:
 
-* the agent wastes time
-* the agent misses things
-* the agent mixes things up
-* the agent cannot show its work
+- the agent wastes time
+- the agent misses things
+- the agent mixes things up
+- the agent cannot show its work
 
 If the evidence room is organized:
 
-* the agent searches better
-* the agent retrieves faster
-* the agent cites correctly
-* the outputs are easier to trust
+- the agent searches better
+- the agent retrieves faster
+- the agent cites correctly
+- the outputs are easier to trust
 
 That is the simplest way to understand why corpus engineering matters so much.
 
@@ -198,3 +197,17 @@ Once the corpus is trustworthy, the next real design question becomes:
 **How should the agent search it?**
 
 That is what Part 2 covers. The answer in this project is especially good: the system separates file discovery from content retrieval by using both a path index and a chunk index. That single choice makes the rest of the workflow much more precise and much easier to audit.
+
+
+
+
+
+
+
+
+
+
+
+
+
+

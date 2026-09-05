@@ -1,13 +1,13 @@
-# Part 8: Security, Governance, and the Real Rollout of an Industry Agentic AI System
+﻿# Part 8: Security, Governance, and the Real Rollout of an Industry Agentic AI System
 
 By the time a team reaches this stage, the hardest technical pieces are usually already in motion:
 
-* the corpus exists
-* retrieval works
-* prompts are structured
-* outputs are parseable
-* evaluation is defined
-* observability and recovery are in place
+- the corpus exists
+- retrieval works
+- prompts are structured
+- outputs are parseable
+- evaluation is defined
+- observability and recovery are in place
 
 But one final question determines whether the system actually survives inside the organization:
 
@@ -19,9 +19,9 @@ That answer depends on security, governance, auditability, and operational hando
 
 The security architecture makes the core goals clear:
 
-* protect sensitive documents and outputs
-* enforce least privilege
-* make access auditable
+- protect sensitive documents and outputs
+- enforce least privilege
+- make access auditable
 
 This matters in agentic AI because the system often sits directly on top of sensitive knowledge stores.
 The broader Azure platform adds another governance dimension: user uploads and chat threads are scoped by index, user, and thread, while indexed artifacts can be hydrated on resume. That pattern matters because production systems must govern not only the central corpus, but also temporary or user-provided knowledge that enters a session.
@@ -34,20 +34,20 @@ In a traditional data system, people are used to governing schemas and infrastru
 
 In an agentic AI system, behavior also changes when you change:
 
-* prompts
-* retrieval rules
-* mappings
-* parser logic
-* index configuration
-* freshness policy
+- prompts
+- retrieval rules
+- mappings
+- parser logic
+- index configuration
+- freshness policy
 
 That is why governance in this system is not just about access. It is also about change control.
 
 The compliance model is especially helpful here because it focuses on:
 
-* source-to-output lineage
-* retention and reproducibility
-* change control for prompts, schema, and indexing logic
+- source-to-output lineage
+- retention and reproducibility
+- change control for prompts, schema, and indexing logic
 
 ## Auditability is what makes humans comfortable
 
@@ -55,11 +55,11 @@ People rarely trust AI because the model is sophisticated.
 
 They trust it when the system can answer questions like:
 
-* Where did this value come from?
-* Which file version was used?
-* What changed between runs?
-* Can we replay this result?
-* Can we trace this answer back to a real document?
+- Where did this value come from?
+- Which file version was used?
+- What changed between runs?
+- Can we replay this result?
+- Can we trace this answer back to a real document?
 
 That is why fields like `doc_id`, `checksum`, `citations`, `last_modified`, and `pipeline_run_id` matter so much.
 
@@ -73,11 +73,11 @@ A system is not really production-ready just because the original builders can r
 
 It becomes production-ready when:
 
-* operators can monitor it
-* support teams can triage it
-* engineers can replay and debug it
-* business users can interpret the outputs
-* ownership is clear when something goes wrong
+- operators can monitor it
+- support teams can triage it
+- engineers can replay and debug it
+- business users can interpret the outputs
+- ownership is clear when something goes wrong
 
 That is why training, runbooks, and dry runs matter.
 
@@ -105,14 +105,20 @@ That is what this architecture demonstrates, and that is why it is such a strong
 
 If you want to build highly capable agentic AI for your own domain, start with the boring parts and treat them with respect.
 
-* organize the corpus
-* define the metadata
-* shape the search flow
-* ground the domain language
-* constrain the prompt
-* normalize the output
-* measure quality
-* plan for failure
-* govern the changes
+- organize the corpus
+- define the metadata
+- shape the search flow
+- ground the domain language
+- constrain the prompt
+- normalize the output
+- measure quality
+- plan for failure
+- govern the changes
 
 The agents become more useful when the system around them becomes more disciplined.
+
+
+
+
+
+

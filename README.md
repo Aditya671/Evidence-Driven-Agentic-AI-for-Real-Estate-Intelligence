@@ -1,148 +1,115 @@
-# Building an Evidence-Driven Agentic AI System for Real-Estate Intelligence
+# Evidence-Driven Agentic AI for Real-Estate Intelligence
 
-A production-oriented reference architecture for extracting trustworthy, traceable intelligence from complex enterprise documents.
+This repository now has **two intentionally separate architecture tracks**:
+
+1. **Real-world Azure implementation** — preserved from the actual work and kept intact.
+2. **Cloud-neutral + AWS implementation** — generalized so the architecture can be onboarded to another cloud without pretending the real implementation was multi-cloud.
+
+## Documentation model
+
+```text
+                    Evidence-Driven Architecture
+                              |
+             +----------------+----------------+
+             |                                 |
+             v                                 v
+     REAL-WORLD IMPLEMENTATION          GENERALIZED DESIGN
+             |                                 |
+             v                        +--------+--------+
+     real-world/azure/               |                 |
+                                     v                 v
+                              cloud-agnostic        aws/
 ```
-Business Question
-       ↓
-Entity Resolution
-       ↓
-Domain Grounding
-       ↓
-Agentic Planning
-       ↓
-Evidence Retrieval
-       ↓
-Extraction
-       ↓
-Validation
-       ↓
-Conflict Resolution
-       ↓
-Evidence-Backed Output
-```
----
-This folder contains a Medium-ready series about building a production-grade agentic AI system for enterprise document intelligence. The series is intentionally sanitized: it explains the architecture, workflow patterns, extraction discipline, and operating model without exposing private source names, tenant-specific paths, proprietary identifiers, or sensitive prompt text.
 
-The goal of the series is simple:
+### Real-world Azure track
 
-* help a technical reader understand how a real agentic AI system is assembled
-* make the ideas approachable for product, data, and engineering readers
-* stay grounded in production implementation patterns
-* focus on an Azure-centered production system
+`real-world/azure/` contains the Azure-based architecture, core documentation, production blueprint, evidence observations, readiness checklist, and validation report.
 
-## Flagship Standalone Post
+These files are preserved as implementation evidence.
 
-This series also includes a standalone technical deep dive built from the blog brief:
+### Cloud-neutral track
 
-* Subject: `Automating Real Estate Intelligence with Agentic AI Workflows`
-* Focus: using internal rate of return (IRR) and rent growth rate as concrete examples to explain how the same workflow can extract as much real estate data and intelligence as needed
-* Draft: `technical-blog-automating-real-estate-intelligence-with-agentic-ai-workflows.md`
+`architecture/`, `core/cloud-agnostic/`, and `cloud-agnostic/` describe the generalized architecture and portability contracts.
 
-Use that post as the single-article version of the story, and use the numbered parts as the expanded series.
+### AWS track
 
-## What This Series Is Trying To Teach
+`aws/` maps those contracts to current AWS capabilities including S3, Textract, OpenSearch, Bedrock, Bedrock AgentCore, Step Functions, IAM, KMS, and CloudWatch.
 
-This is not a series about "how to make an LLM call tools."
+## Why the separation matters
 
-It is a series about how to build a system that can be trusted to answer business questions from messy enterprise documents.
+The project should not claim:
 
-That means the series is built around five repeated themes:
+> "This architecture is multi-cloud because we replaced Azure service names."
 
-1. Retrieval quality comes before agent cleverness.
-2. Domain grounding matters as much as model choice.
-3. Prompts are operating policies, not writing exercises.
-4. Raw model output is not the final product.
-5. Evaluation, recovery, and governance are part of the architecture.
+Instead:
 
-## Extraction Rule Authoring Pattern
+> **The real Azure implementation is evidence. The cloud-neutral architecture extracts the reusable engineering principles from that evidence. AWS is one concrete implementation of those principles.**
 
-One of the core ideas behind this system is that extraction rules are written in a repeatable per-variable pattern.
+This preserves technical credibility while making the work reusable.
 
-For each variable, the mapping logic is authored in this order:
+## Core architectural principle
 
-1. **Where to look first**
-   Define the highest-priority document families, sections, tabs, tables, or page contexts.
+The system is built around:
 
-2. **How to extract**
-   Define the labels, synonyms, structural patterns, and narrative cues that count as evidence.
+**Business Question → Entity + Metric Grounding → Source Discovery → Scoped Evidence Retrieval → Page/Table Verification → Lean JSON Extraction → Validation + Conflict Resolution → Enrichment → Evidence-Bearing Output → Evaluation + Observability + Recovery**
 
-3. **How to calculate or validate**
-   Define fallback formulas, plausibility checks, unit checks, chronology checks, and scenario checks.
+The central idea is simple:
 
-4. **How to resolve conflicts**
-   Define source precedence, version precedence, classifier handling, and what to do when multiple plausible values remain.
+> **Retrieval trust comes before agent cleverness.**
 
-This pattern is a major reason the workflow stays disciplined. It turns a vague extraction target into a controlled retrieval-and-decision recipe.
+## Important separation
 
-## Implementation Areas Used In The Writing
+Cloud providers supply infrastructure capabilities.
 
-The public narrative refers to implementation areas rather than private repository paths:
+The application owns:
 
-* Metric extraction runtime
-* Tool description layer
-* Query generation layer
-* Path-index and chunk-index retrieval tools
-* Parser and formatter layer
-* Runtime configuration layer
-* Governed metric mapping layer
-* Sanitized asset and investment reference datasets
-* Application platform data-indexing modules
-* Conversational service layer
-* Index-update pipeline
-* Application platform documentation
+- entity resolution;
+- metric mappings;
+- extraction rules;
+- evidence contracts;
+- workflow semantics;
+- validation;
+- provenance;
+- evaluation;
+- governance.
 
-## Current System Lens
+## Tracks
 
-The updated series treats the production system as two connected layers:
+### Real-world Azure
 
-* a general Azure document intelligence platform for ingestion, indexing, retrieval, chat, user uploads, and observability
-* a specialized metric extraction workflow for governed asset-level data extraction, enrichment, monitoring, and export
+- `real-world/azure/architecture/`
+- `real-world/azure/core/`
+- `real-world/azure/evidence/`
+- `real-world/azure/production/`
+- `real-world/azure/validation/`
 
-The public narrative stays sanitized: it explains the architecture patterns without exposing proprietary identifiers, secrets, tenant-specific paths, or sensitive prompt text.
+### Cloud-neutral
 
-## Sanitization Policy
+- `architecture/cloud-agnostic-reference-architecture.md`
+- `architecture/cloud-capability-model.md`
+- `core/cloud-agnostic/`
+- `cloud-agnostic/file-by-file-analysis-and-crosswalk.md`
+- `cloud-agnostic/portability-and-onboarding-guide.md`
+- `cloud-agnostic/governance-and-standards.md`
 
-All documents in this folder are intentionally sanitized to protect organizational integrity.
+### AWS
 
-That means the series:
+- `aws/reference-architecture.md`
+- `aws/service-mapping.md`
+- `aws/implementation-blueprint.md`
+- `aws/security-governance.md`
+- `aws/observability-and-evaluation.md`
 
-* avoids exposing proprietary identifiers, tenant-specific values, and operational secrets
-* avoids reproducing sensitive prompt material beyond what is necessary to explain architecture
-* focuses on engineering patterns, control logic, and workflow design rather than organization-specific business detail
-* refers to document families, storage layers, mapping structures, and tool roles at an architectural level
+## Portability rule
 
-This keeps the writing safe to share publicly while still making it technically useful for AI engineers, data scientists, and PropTech readers.
+A new cloud should require changes primarily to infrastructure adapters, not to:
 
-## Series Map
+- business rules;
+- evidence schemas;
+- mappings;
+- evaluation datasets;
+- workflow semantics;
+- provenance;
+- governance controls.
 
-1. `part-01-foundation-before-agents.md`
-   Why the real foundation is indexing, metadata, and corpus trust.
-
-2. `part-02-retrieval-architecture-that-agents-can-trust.md`
-   Why this system separates path discovery from chunk retrieval.
-
-3. `part-03-domain-grounding-mappings-and-entity-resolution.md`
-   How mappings, aliases, and entity hierarchy turn search into understanding.
-
-4. `part-04-system-prompts-as-operating-policy.md`
-   How the system prompt controls behavior, risk, and output discipline.
-
-5. `part-05-turning-an-agentic-ai-workflow-into-a-maintainable-system.md`
-   How to turn a successful agentic AI workflow into a maintainable workflow package.
-
-6. `part-06-data-contracts-post-processing-and-business-ready-outputs.md`
-   Why the final product is not a model response but a governed business artifact.
-
-7. `part-07-evaluation-observability-and-recovery.md`
-   How to measure quality, monitor runs, and recover safely.
-
-8. `part-08-security-governance-and-how-to-roll-it-out.md`
-   How to make the system adoptable inside a real organization.
-
-[System](linkedin-cover.png)
-
-* one sanitized architecture diagram
-* one sanitized sequence diagram
-* one short pseudocode excerpt for tool orchestration
-* one sanitized mapping snippet
-* one sanitized asset-data example
+That is the standard this documentation now targets.
